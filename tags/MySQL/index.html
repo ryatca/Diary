@@ -2,16 +2,15 @@
 <html lang="ja">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>タグ - ryatcaメモ</title>
+<title>タグ: MySQL - ryatcaメモ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
     <meta name="description" content="いつも普通に過ごしてるときに気づいたとき用メモ">
-<meta name="keywords" content="Git,GitHub,GitHub Pages,雑多,Linux,PHP,MySQL">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ryatcaメモ">
-<meta property="og:url" content="https://ryatca.github.io/tags/index.html">
+<meta property="og:url" content="https://ryatca.github.io/tags/MySQL/index.html">
 <meta property="og:site_name" content="ryatcaメモ">
 <meta property="og:description" content="いつも普通に過ごしてるときに気づいたとき用メモ">
 <meta property="og:locale" content="ja">
@@ -105,7 +104,7 @@
                 
                 <a class="navbar-item" href="/diary/archives">Archives</a>
                 
-                <a class="navbar-item is-active" href="/diary/tags">Tags</a>
+                <a class="navbar-item" href="/diary/tags">Tags</a>
                 
                 <a class="navbar-item" href="/diary/about">About</a>
                 
@@ -136,60 +135,84 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                タグ
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/diary/tags">タグ</a></li>
+            <li class="is-active"><a href="#" aria-current="page">MySQL</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-02T14:14:02.000Z">2019-04-02</time>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/Git/">
-                        <span class="tag">Git</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/diary/categories/サーバサイド/">サーバサイド</a>
                 </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/GitHub/">
-                        <span class="tag">GitHub</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/GitHub-Pages/">
-                        <span class="tag">GitHub Pages</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6分 read (About 825 words)
+                </span>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/Linux/">
-                        <span class="tag">Linux</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/MySQL/">
-                        <span class="tag">MySQL</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/PHP/">
-                        <span class="tag">PHP</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/diary/2019/04/02/REST-API作るときにコケたこと/">REST API作るときにコケたことを忘れないためのメモ</a>
+            
+        </h1>
+        <div class="content">
+            <p>学校のほうで使っているPCが初期化されてたので仮想環境の設定も初期状態に戻りました。<del>なんてことしてくれてんだ</del>。<br>去年ハマった問題を他の人にも分かりやすいよう、忘れないように書き残しておきます。<br>PHPを使ってDBに値を入れたときに入らなかったり、真っ白になった、時に参考にしてみてください。<br>(Linuxコマンドは各自で調べてください。<code>ls</code>と<code>cd</code>と<code>vi</code>さえ分かってれば何とかなるはずですが。。。)</p>
+<hr>
+<p>とりあえずvagrantを使っているので<code>vagrant up</code>で立ち上げます。(初回起動なのでupです。次回起動はreloadで。)<br>upが正常にできたらpublicフォルダにindex.htmlでも入れて確認してください。ここでは端折ります。  </p>
+<p>ここからvirtualboxで仮想マシンを操作していきます。(学校はCentOSでした。)<br><code>sudo</code>コマンドを使いたい方はそのままvagrantでログインしてもよいですが、この先は<code>root</code>で入ってもらってること前提で書きます。  </p>
+<p>まずはhttpd.confの確認をします。REST APIを使用するにあたって、<br><code>LoadModule rewrite module modules/mod_rewrite.so</code><br>の行が入っていること前提です。<br>(あんまり詳しくないですが、<code>cat httpd.conf | grep LoadModule rewrite module modules/mod_rewrite.so</code>な感じにコマンド叩いてやれば、わかる…はず。。。)<br>なかったら適当にLoadModuleがいっぱいあるところがあるのでその辺りに記述すれば動くはずです。</p>
+<hr>
+<p>次にphp.iniの確認です。  </p>
+<ul>
+<li>確認事項リスト<ul>
+<li>memory_limit</li>
+<li>post_max_size</li>
+<li>upload_max_filesize</li>
+</ul>
+</li>
+</ul>
+<p>です。<br>上からデフォルトで128M,8M,2Mになっているはずなので値を大きくするとアップロードできる容量が大きくなります。<br>設定するとすると<br>memory_limit &gt; post_max_size &gt; upload_max_filesize<br>こんな感じの設定でとりあえず大丈夫だと思います。  </p>
+<hr>
+<p>最後にmy.confの設定です。<br>確認するのは、<br><code>max_allowed_packet</code><br>です。<br>これは<code>[mysqld]</code>の下に記述を足してください。イメージとしては、<br><code>[mysqld]</code><br><code>max_allowed_packet=64MB</code><br>みたいに記述してやれば十分だと思います。  </p>
+<hr>
+<p>コマンドプロンプト側から<code>vagrant reload</code>で仮想マシンを再起動させてやってください。<br>これで設定が反映されるはずですので<code>&lt;?php echo phpinfo(); ?&gt;</code>とかで確認してください。  </p>
+<p>これで多少大きいファイルをアップロードしても大丈夫になります。私はbase64を入れまくってたらこの問題に当たりました。  </p>
+<p>このメモで誰か一人でも参考になれば幸いです。  </p>
+
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+
+
+
+</div>
                 
 
 
