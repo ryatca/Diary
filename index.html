@@ -142,6 +142,57 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-09T14:24:33.000Z">2019-04-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/diary/categories/フロントエンド/">フロントエンド</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3分 read (About 428 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/diary/2019/04/09/jQueryのclick-とon-click-の違い/">jQueryのclick()とon(&#39;click&#39;)の違い</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>学校始まってから体力なさ過ぎて死んでました</strong><br>学校とバイトが終わってから、時間があっても疲れで寝てしまうので体力はつけないとな…  </p>
+<hr>
+<p>今回は題名の通り、jQueryのclick()とon(‘click’)の違いです。<br>結論から言うと<strong>どちらも同じです。</strong><br>じゃあなんで同じのがあるかという話もわかりません。(知ってたら教えてください。)  </p>
+<p>個人的にはon()のほうが使いやすいと思ってますね。一つの処理を一発でまとめられるので。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;#uooo&apos;).on(&#123;</span><br><span class="line">  &apos;click&apos;     : function()&#123;処理&#125;, //クリック時</span><br><span class="line">  &apos;mouseover&apos; : function()&#123;処理&#125;, //マウスが要素に入った時</span><br><span class="line">  &apos;mouseleave&apos;: function()&#123;処理&#125;  //マウスが要素から外れたとき</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>みたいな感じで書けます。  </p>
+<p>でも結局こういう書き方って慣れてないと書けないと思っています。<br>実際周りにフロントエンドの人が多いのでコード見てみるとclick()が多いですね。<br>そもそもｊQueryはプログラムが書けないデザイナー用に生まれたフレームワークだと聞いています。<br>なのでclick()は直感的にわかりやすいということで使われてるんじゃないかな～と思います。  </p>
+<p>こんなこと書いたところで実際に動く部分は同じなので、自分の書きやすい方で書いていきましょう。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-04-02T14:14:02.000Z">2019-04-02</time>
                 
                 <div class="level-item">
@@ -458,7 +509,7 @@
                         投稿
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </div>
             </div>
@@ -468,7 +519,7 @@
                         カテゴリ
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        4
                     </p>
                 </div>
             </div>
@@ -478,7 +529,7 @@
                         タグ
                     </p>
                     <p class="title has-text-weight-normal">
-                        6
+                        8
                     </p>
                 </div>
             </div>
@@ -563,6 +614,14 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/diary/categories/フロントエンド/">
+            <span class="level-start">
+                <span class="level-item">フロントエンド</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/diary/categories/雑多/">
             <span class="level-start">
                 <span class="level-item">雑多</span>
@@ -582,7 +641,7 @@
         <h3 class="menu-label">
             タグクラウド
         </h3>
-        <a href="/diary/tags/Git/" style="font-size: 10px;">Git</a> <a href="/diary/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/diary/tags/GitHub-Pages/" style="font-size: 10px;">GitHub Pages</a> <a href="/diary/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/diary/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/diary/tags/PHP/" style="font-size: 10px;">PHP</a>
+        <a href="/diary/tags/Git/" style="font-size: 10px;">Git</a> <a href="/diary/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/diary/tags/GitHub-Pages/" style="font-size: 10px;">GitHub Pages</a> <a href="/diary/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/diary/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/diary/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/diary/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/diary/tags/jQuery/" style="font-size: 10px;">jQuery</a>
     </div>
 </div>
 
@@ -596,6 +655,25 @@
         <h3 class="menu-label">
             最近の記事
         </h3>
+        
+        <article class="media">
+            
+            <a href="/diary/2019/04/09/jQueryのclick-とon-click-の違い/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/diary/images/thumbnail.svg" alt="jQueryのclick()とon(&#39;click&#39;)の違い">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-09T14:24:33.000Z">2019-04-09</time></div>
+                    <a href="/diary/2019/04/09/jQueryのclick-とon-click-の違い/" class="has-link-black-ter is-size-6">jQueryのclick()とon(&#39;click&#39;)の違い</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/diary/categories/フロントエンド/">フロントエンド</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -673,25 +751,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/diary/2019/03/29/とりあえず。/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/diary/images/thumbnail.svg" alt="とりあえず。">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-29T05:21:48.000Z">2019-03-29</time></div>
-                    <a href="/diary/2019/03/29/とりあえず。/" class="has-link-black-ter is-size-6">とりあえず。</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/diary/categories/雑多/">雑多</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -710,7 +769,7 @@
                     <span class="level-item">四月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -761,6 +820,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/diary/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/diary/tags/Linux/">
                         <span class="tag">Linux</span>
                         <span class="tag is-grey">1</span>
@@ -777,6 +843,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/diary/tags/PHP/">
                         <span class="tag">PHP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/diary/tags/jQuery/">
+                        <span class="tag">jQuery</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -806,6 +879,25 @@
         
         <article class="media">
             
+            <a href="/diary/2019/04/09/jQueryのclick-とon-click-の違い/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/diary/images/thumbnail.svg" alt="jQueryのclick()とon(&#39;click&#39;)の違い">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-09T14:24:33.000Z">2019-04-09</time></div>
+                    <a href="/diary/2019/04/09/jQueryのclick-とon-click-の違い/" class="has-link-black-ter is-size-6">jQueryのclick()とon(&#39;click&#39;)の違い</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/diary/categories/フロントエンド/">フロントエンド</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/diary/2019/04/02/REST-API作るときにコケたこと/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/diary/images/thumbnail.svg" alt="REST API作るときにコケたことを忘れないためのメモ">
@@ -880,25 +972,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/diary/2019/03/29/とりあえず。/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/diary/images/thumbnail.svg" alt="とりあえず。">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-29T05:21:48.000Z">2019-03-29</time></div>
-                    <a href="/diary/2019/03/29/とりあえず。/" class="has-link-black-ter is-size-6">とりあえず。</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/diary/categories/雑多/">雑多</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -917,7 +990,7 @@
                     <span class="level-item">四月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -968,6 +1041,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/diary/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/diary/tags/Linux/">
                         <span class="tag">Linux</span>
                         <span class="tag is-grey">1</span>
@@ -984,6 +1064,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/diary/tags/PHP/">
                         <span class="tag">PHP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/diary/tags/jQuery/">
+                        <span class="tag">jQuery</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

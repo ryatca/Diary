@@ -2,23 +2,24 @@
 <html lang="ja">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>タグ - ryatcaメモ</title>
+<title>jQueryのclick()とon(&#39;click&#39;)の違い - ryatcaメモ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="いつも普通に過ごしてるときに気づいたとき用メモ">
-<meta name="keywords" content="Linux,PHP,MySQL,Git,GitHub,GitHub Pages,JavaScript,jQuery">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ryatcaメモ">
-<meta property="og:url" content="https://ryatca.github.io/tags/index.html">
+    <meta name="description" content="学校始まってから体力なさ過ぎて死んでました学校とバイトが終わってから、時間があっても疲れで寝てしまうので体力はつけないとな…    今回は題名の通り、jQueryのclick()とon(‘click’)の違いです。結論から言うとどちらも同じです。じゃあなんで同じのがあるかという話もわかりません。(知ってたら教えてください。)   個人的にはon()のほうが使いやすいと思ってますね。一つの処理を一発">
+<meta name="keywords" content="JavaScript,jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQueryのclick()とon(&#39;click&#39;)の違い">
+<meta property="og:url" content="https://ryatca.github.io/2019/04/09/jQueryのclick-とon-click-の違い/index.html">
 <meta property="og:site_name" content="ryatcaメモ">
-<meta property="og:description" content="いつも普通に過ごしてるときに気づいたとき用メモ">
+<meta property="og:description" content="学校始まってから体力なさ過ぎて死んでました学校とバイトが終わってから、時間があっても疲れで寝てしまうので体力はつけないとな…    今回は題名の通り、jQueryのclick()とon(‘click’)の違いです。結論から言うとどちらも同じです。じゃあなんで同じのがあるかという話もわかりません。(知ってたら教えてください。)   個人的にはon()のほうが使いやすいと思ってますね。一つの処理を一発">
 <meta property="og:locale" content="ja">
 <meta property="og:image" content="https://ryatca.github.io/diary/images/og_image.png">
+<meta property="og:updated_time" content="2019-04-09T14:25:23.558Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ryatcaメモ">
-<meta name="twitter:description" content="いつも普通に過ごしてるときに気づいたとき用メモ">
+<meta name="twitter:title" content="jQueryのclick()とon(&#39;click&#39;)の違い">
+<meta name="twitter:description" content="学校始まってから体力なさ過ぎて死んでました学校とバイトが終わってから、時間があっても疲れで寝てしまうので体力はつけないとな…    今回は題名の通り、jQueryのclick()とon(‘click’)の違いです。結論から言うとどちらも同じです。じゃあなんで同じのがあるかという話もわかりません。(知ってたら教えてください。)   個人的にはon()のほうが使いやすいと思ってますね。一つの処理を一発">
 <meta name="twitter:image" content="https://ryatca.github.io/diary/images/og_image.png">
 
 
@@ -93,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/diary/">
             
-                <img src="/diary/images/favicon.svg" alt="ryatcaメモ" height="28">
+                <img src="/diary/images/favicon.svg" alt="jQueryのclick()とon(&#39;click&#39;)の違い" height="28">
             
             </a>
         </div>
@@ -105,7 +106,7 @@
                 
                 <a class="navbar-item" href="/diary/archives">Archives</a>
                 
-                <a class="navbar-item is-active" href="/diary/tags">Tags</a>
+                <a class="navbar-item" href="/diary/tags">Tags</a>
                 
                 <a class="navbar-item" href="/diary/about">About</a>
                 
@@ -136,74 +137,79 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                タグ
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-09T14:24:33.000Z">2019-04-09</time>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/Git/">
-                        <span class="tag">Git</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/diary/categories/フロントエンド/">フロントエンド</a>
                 </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/GitHub/">
-                        <span class="tag">GitHub</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/GitHub-Pages/">
-                        <span class="tag">GitHub Pages</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3分 read (About 428 words)
+                </span>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/JavaScript/">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/Linux/">
-                        <span class="tag">Linux</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/MySQL/">
-                        <span class="tag">MySQL</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/PHP/">
-                        <span class="tag">PHP</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/diary/tags/jQuery/">
-                        <span class="tag">jQuery</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                jQueryのclick()とon(&#39;click&#39;)の違い
+            
+        </h1>
+        <div class="content">
+            <p><strong>学校始まってから体力なさ過ぎて死んでました</strong><br>学校とバイトが終わってから、時間があっても疲れで寝てしまうので体力はつけないとな…  </p>
+<hr>
+<p>今回は題名の通り、jQueryのclick()とon(‘click’)の違いです。<br>結論から言うと<strong>どちらも同じです。</strong><br>じゃあなんで同じのがあるかという話もわかりません。(知ってたら教えてください。)  </p>
+<p>個人的にはon()のほうが使いやすいと思ってますね。一つの処理を一発でまとめられるので。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;#uooo&apos;).on(&#123;</span><br><span class="line">  &apos;click&apos;     : function()&#123;処理&#125;, //クリック時</span><br><span class="line">  &apos;mouseover&apos; : function()&#123;処理&#125;, //マウスが要素に入った時</span><br><span class="line">  &apos;mouseleave&apos;: function()&#123;処理&#125;  //マウスが要素から外れたとき</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>みたいな感じで書けます。  </p>
+<p>でも結局こういう書き方って慣れてないと書けないと思っています。<br>実際周りにフロントエンドの人が多いのでコード見てみるとclick()が多いですね。<br>そもそもｊQueryはプログラムが書けないデザイナー用に生まれたフレームワークだと聞いています。<br>なのでclick()は直感的にわかりやすいということで使われてるんじゃないかな～と思います。  </p>
+<p>こんなこと書いたところで実際に動く部分は同じなので、自分の書きやすい方で書いていきましょう。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/diary/tags/JavaScript/">JavaScript</a>, <a class="has-link-grey -link" href="/diary/tags/jQuery/">jQuery</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/diary/2019/04/02/REST-API作るときにコケたこと/">
+                <span class="level-item">REST API作るときにコケたことを忘れないためのメモ</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
                 
 
 
@@ -831,7 +837,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/diary/">
                 
-                    <img src="/diary/images/favicon.svg" alt="ryatcaメモ" height="28">
+                    <img src="/diary/images/favicon.svg" alt="jQueryのclick()とon(&#39;click&#39;)の違い" height="28">
                 
                 </a>
                 <p class="is-size-7">
