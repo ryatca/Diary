@@ -142,6 +142,92 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-24T14:09:34.000Z">2019-04-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/diary/categories/サーバサイド/">サーバサイド</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6分 read (About 965 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/diary/2019/04/24/データベース接続の備忘録-INSERT編/">データベース接続の備忘録(INSERT編)</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>SELECTときたらINSERTでしょう</strong></p>
+<p>みたいな感じでINSERT編スタートです。<br><a href="https://ryatca.github.io/diary/2019/04/18/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E6%8E%A5%E7%B6%9A%E3%81%AE%E5%82%99%E5%BF%98%E9%8C%B2-SELECT%E7%B7%A8/">SELECT編はコチラ</a>  </p>
+<p>DBの設計はSELECT編と同じような構造で説明していきます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">id</th>
+<th style="text-align:left">title</th>
+<th style="text-align:left">detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">hoge</td>
+<td style="text-align:left">hogehoge</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">fuga</td>
+<td style="text-align:left">fugafuga</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">piyo</td>
+<td style="text-align:left">piyopiyo</td>
+</tr>
+</tbody>
+</table>
+<p>まずはDBに接続する関数を作っちゃいましょう。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  function DBConnect()&#123;</span><br><span class="line">    $host = &apos;localhost&apos;; //host名を入れてください。</span><br><span class="line">    $dbname = &apos;test&apos;; //データベースの名前入れてください。</span><br><span class="line">    $user = &apos;hoge&apos;; //ユーザー名を入れてください。</span><br><span class="line">    $pass = &apos;fuga&apos;; //パスワードを入れてください。</span><br><span class="line"></span><br><span class="line">    $db = &apos;mysql:host=&apos;.$host.&apos;;dbname=&apos;.dbname.&apos;;charset=utf8;&apos;;</span><br><span class="line"></span><br><span class="line">    try&#123;</span><br><span class="line">      $pdo = new PDO($db,$user,$host);</span><br><span class="line">      return $pdo;</span><br><span class="line">    &#125;catch(PDOException $e)&#123;</span><br><span class="line">      return $e-&gt;getMessage();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>ですね。もう丸々SELECTと同じなのでコピペで大丈夫です。</p>
+<p>ここからINSERTのコードを書いていきますが大体SELECTと一緒なので、一部分さえ覚えちゃえばSELECT,INSERTは超余裕になります。<br>僕はINSERT文はこういう風に書いています。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  $pdo = DBConnect();</span><br><span class="line">  $sql = &quot;INSERT INTO test(title,detail) VALUES(:title,:detail)&quot;; //SELECTと違うとこその1</span><br><span class="line">  $sth = $pdo-&gt;prepare($sql);</span><br><span class="line">  $sth-&gt;execute(array(&quot;:title&quot;=&gt;&quot;hoga&quot;,&quot;:detail&quot;=&gt;&quot;hogefuga&quot;)); //SELECTと違うとこその2</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>違うとこの説明を書いていきますね。  </p>
+<p>「その1」<br>実際のところSQL文がSELECTからINERTに変わっただけです。<del>(idはAIってことでヨロです)</del>  </p>
+<p>「その2」<br>execute()ですね。SELECTと違うのは連想配列を中に入れているということでしょうか。<br>連想配列の方が好きなので今のコードに採用していますが、ほかにも書き方があり、<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$sth-&gt;bindParam(&apos;:title&apos;,&apos;hoga&apos;);</span><br><span class="line">$sth-&gt;bindParam(&apos;:detail&apos;,&apos;hogehuga&apos;);</span><br><span class="line">$sth-&gt;execute();</span><br></pre></td></tr></table></figure></p>
+<p>と書くこともできます。  </p>
+<p>個人的な意見としては可読性はよくなると思いますが、短くできるものは短くしたというのが頭の中に…<br>あとPHPがほぼ独学なためbindParamを後から知ったという背景があります。。。  </p>
+<p>ちなみSELECTでもこのbindParam(execute()の中に連想配列)は使えます。<br>どのように使うか予想がついていると思いますが、<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  $pdo = DBConnect();</span><br><span class="line">  $sql = &apos;SELECT * FROM test WHERE title = &quot;:title&quot;&apos;;</span><br><span class="line">  $sth = $pdo-&gt;prepare($sql);</span><br><span class="line">  $sth-&gt;execute(array(&quot;:title&quot;=&gt;&quot;hoge&quot;));</span><br><span class="line">  $result = $sth-&gt;fetchAll(PDO::FEACH_ASSOC);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>これでtitleがhogeの列だけ取れてくるはずです。  </p>
+<p>DBの基本的操作さえ覚えてしまえば、+αでREST APIも作れますし必須といってもいいくらい重要な技術ですので、コードを見て理解できるところまでは頑張ったほうがいいと思います！<br>(余談ですがLaravelのEloquentとPDOの実行速度を比較してみた記事を見つけ、PDOのほうが断然早い結果が出ているそうです…)  </p>
+<p>生のPHPでのDB接続を書いてきましたが、Laravelも記事かけるレベルまで理解しておきたいなあ～  </p>
+<p>ここどうするん～？？？みたいな質問も気づくように言ってもらえればわかる範囲で答えます。<br>この記事を読んでくれた人で「ここのコード間違ってるよ！」とか「ここはもう少し短くかける」などの意見があったらTwitterでコッソリ教えてください。<br><del>PHPなんてまだ1年もやってませんからね</del></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-04-23T14:16:20.000Z">2019-04-23</time>
                 
                 <div class="level-item">
@@ -642,7 +728,7 @@
                         投稿
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        9
                     </p>
                 </div>
             </div>
@@ -744,7 +830,7 @@
                 <span class="level-item">サーバサイド</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/diary/categories/フロントエンド/">
@@ -774,7 +860,7 @@
         <h3 class="menu-label">
             タグクラウド
         </h3>
-        <a href="/diary/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/diary/tags/Git/" style="font-size: 10px;">Git</a> <a href="/diary/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/diary/tags/GitHub-Pages/" style="font-size: 10px;">GitHub Pages</a> <a href="/diary/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/diary/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/diary/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/diary/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/diary/tags/Vue-js/" style="font-size: 10px;">Vue.js</a> <a href="/diary/tags/jQuery/" style="font-size: 10px;">jQuery</a>
+        <a href="/diary/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/diary/tags/Git/" style="font-size: 10px;">Git</a> <a href="/diary/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/diary/tags/GitHub-Pages/" style="font-size: 10px;">GitHub Pages</a> <a href="/diary/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/diary/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/diary/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/diary/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/diary/tags/Vue-js/" style="font-size: 10px;">Vue.js</a> <a href="/diary/tags/jQuery/" style="font-size: 10px;">jQuery</a>
     </div>
 </div>
 
@@ -788,6 +874,25 @@
         <h3 class="menu-label">
             最近の記事
         </h3>
+        
+        <article class="media">
+            
+            <a href="/diary/2019/04/24/データベース接続の備忘録-INSERT編/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/diary/images/thumbnail.svg" alt="データベース接続の備忘録(INSERT編)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T14:09:34.000Z">2019-04-24</time></div>
+                    <a href="/diary/2019/04/24/データベース接続の備忘録-INSERT編/" class="has-link-black-ter is-size-6">データベース接続の備忘録(INSERT編)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/diary/categories/サーバサイド/">サーバサイド</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -865,25 +970,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/diary/2019/04/01/4月1日/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/diary/images/thumbnail.svg" alt="4月1日">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T12:23:34.000Z">2019-04-01</time></div>
-                    <a href="/diary/2019/04/01/4月1日/" class="has-link-black-ter is-size-6">4月1日</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/diary/categories/雑多/">雑多</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -902,7 +988,7 @@
                     <span class="level-item">四月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -976,14 +1062,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/diary/tags/MySQL/">
                         <span class="tag">MySQL</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/diary/tags/PHP/">
                         <span class="tag">PHP</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1026,6 +1112,25 @@
         
         <article class="media">
             
+            <a href="/diary/2019/04/24/データベース接続の備忘録-INSERT編/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/diary/images/thumbnail.svg" alt="データベース接続の備忘録(INSERT編)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T14:09:34.000Z">2019-04-24</time></div>
+                    <a href="/diary/2019/04/24/データベース接続の備忘録-INSERT編/" class="has-link-black-ter is-size-6">データベース接続の備忘録(INSERT編)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/diary/categories/サーバサイド/">サーバサイド</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/diary/2019/04/23/Vueを学んで三日で作ったもの/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/diary/images/thumbnail.svg" alt="Vueを学んで三日で作ったもの">
@@ -1100,25 +1205,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/diary/2019/04/01/4月1日/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/diary/images/thumbnail.svg" alt="4月1日">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T12:23:34.000Z">2019-04-01</time></div>
-                    <a href="/diary/2019/04/01/4月1日/" class="has-link-black-ter is-size-6">4月1日</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/diary/categories/雑多/">雑多</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1137,7 +1223,7 @@
                     <span class="level-item">四月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1211,14 +1297,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/diary/tags/MySQL/">
                         <span class="tag">MySQL</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/diary/tags/PHP/">
                         <span class="tag">PHP</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
